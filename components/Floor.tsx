@@ -161,7 +161,7 @@ export const Floor: React.FC<FloorProps> = ({ rabbitRef }) => {
   return (
     <group rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
        {/* The "Clean" floor underneath */}
-       <mesh position={[0, 0, -0.05]}>
+       <mesh position={[0, 0, -0.2]}>
           <planeGeometry args={[GAME_SETTINGS.FLOOR_SIZE, GAME_SETTINGS.FLOOR_SIZE]} />
           <meshStandardMaterial color="#f0e6d2" /> 
        </mesh>

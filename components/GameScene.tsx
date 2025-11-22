@@ -13,8 +13,8 @@ export const GameScene: React.FC = () => {
 
   return (
     <Canvas shadows dpr={[1, 2]}>
-      {/* Camera moved back to keep everything in view */}
-      <PerspectiveCamera makeDefault position={[0, 18, 18]} fov={40} />
+      {/* Camera moved back to keep everything in view, with optimized near/far for mobile depth precision */}
+      <PerspectiveCamera makeDefault position={[0, 18, 18]} fov={40} near={5} far={60} />
       <OrbitControls 
         enableRotate={false} 
         enableZoom={false} 
@@ -48,8 +48,8 @@ export const GameScene: React.FC = () => {
         <Carrot key={carrot.id} item={carrot} />
       ))}
 
-      {/* FX */}
-      <ContactShadows resolution={512} scale={30} blur={2} opacity={0.25} far={10} color="#000000" />
+      {/* FX - Lifted slightly to avoid Z-fighting with floor */}
+      <ContactShadows position={[0, 0.02, 0]} resolution={512} scale={30} blur={2} opacity={0.25} far={10} color="#000000" />
       
       {/* Background/Fog - Adjusted to [15, 50] to be visible but not overwhelming */}
       <color attach="background" args={['#1a1a1a']} />
